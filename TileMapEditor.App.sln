@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TileMapEditor.App", "TileMapEditor.App\TileMapEditor.App.csproj", "{6288D3BF-93F9-4522-AD35-C3F1A5F39242}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6288D3BF-93F9-4522-AD35-C3F1A5F39242}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6288D3BF-93F9-4522-AD35-C3F1A5F39242}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6288D3BF-93F9-4522-AD35-C3F1A5F39242}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6288D3BF-93F9-4522-AD35-C3F1A5F39242}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {05C4D1AC-DC6B-4902-8553-985AFE76B551}
+	EndGlobalSection
+EndGlobal
