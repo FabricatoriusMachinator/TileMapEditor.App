@@ -54,5 +54,19 @@ namespace TileMapEditor.App
                 }
             }
         }
+
+        private bool clicked = false;
+        public bool Clicked
+        {
+            get { return clicked; }
+            set
+            {
+                if (clicked != value)
+                {
+                    clicked = value;
+                    OnPropertyChanged("Clicked");
+                }
+            }
+        }
     }
 }

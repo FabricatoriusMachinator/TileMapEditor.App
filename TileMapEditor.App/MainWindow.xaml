@@ -25,13 +25,25 @@
                         Focusable="False"
                         Command="{Binding DataContext.TileClickCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                         CommandParameter="{Binding}">
+                        <Button.Resources>
+                            <DataTemplate x:Key="Default">
+                                <Image Source="asdasdasdsade.png" Height="64" Width="64"/>
+                            </DataTemplate>
+                            <DataTemplate x:Key="Water">
+                                <Image Source="asdasdasdsade.png" Height="64" Width="64"/>
+                            </DataTemplate>
+                            <DataTemplate x:Key="Grass">
+                                <Image Source="asdasdasdsade.png" Height="64" Width="64"/>
+                            </DataTemplate>
+                        </Button.Resources>
+                        <Image x:Name="TileImage" Stretch="Fill" Source="3x.png"/> 
                     </Button>
                     <DataTemplate.Triggers>
                         <DataTrigger Binding="{Binding Red}" Value="True">
-                            <Setter TargetName="Tile" Property="Background" Value="Red"/>
+                            <Setter TargetName="TileImage" Property="Source" Value="pic.png"/>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Green}" Value="True">
-                            <Setter TargetName="Tile" Property="Background" Value="Green"/>
+                            <Setter TargetName="TileImage" Property="Source" Value="C:\Users\mafl9\source\repos\TileMapEditor.App\TileMapEditor.App\pic2.png"/>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Blue}" Value="True">
                             <Setter TargetName="Tile" Property="Background" Value="Blue"/>
