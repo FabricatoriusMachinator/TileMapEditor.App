@@ -6,51 +6,62 @@
         xmlns:local="clr-namespace:TileMapEditor.App"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Window.Resources>
-        <Image x:Key="Green" Source="asdasdasdsade.png" Height="64" Width="64" />
-        <Image x:Key="Blue" Source="asdasdasdsade.png" Height="64" Width="64"/>
-        <Image x:Key="Red" Source="asdasdasdsade.png" Height="64" Width="64"/>
-    </Window.Resources>
-    <ScrollViewer Margin="317,56,0,0" HorizontalScrollBarVisibility="Auto" BorderBrush="Black" BorderThickness="10">
-        <ItemsControl ItemsSource="{Binding Tiles}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <UniformGrid Rows="8" Columns="8" Height="512" Width="512"/>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
+    <Grid>
 
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Button x:Name="Tile"
+        <UniformGrid Rows="3" Columns="2" Height="128" Width="128" Margin="37,56,635,250">
+            <Button>
+                <Image Stretch="Fill" Source="grass.png"/>
+            </Button>
+            <Button>
+                <Image Stretch="Fill" Source="cobble.png"/>
+            </Button>
+            <Button>
+                <Image Stretch="Fill" Source="grass.png"/>
+            </Button>
+            <Button>
+                <Image Stretch="Fill" Source="grass.png"/>
+            </Button>
+            <Button>
+                <Image Stretch="Fill" Source="grass.png"/>
+            </Button>
+            <Button>
+                <Image Stretch="Fill" Source="grass.png"/>
+            </Button>
+
+        </UniformGrid>
+
+        <ScrollViewer Margin="317,56,0,0" HorizontalScrollBarVisibility="Auto" BorderBrush="Black" BorderThickness="10">
+            <ItemsControl ItemsSource="{Binding Tiles}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Rows="8" Columns="8" Height="512" Width="512"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button x:Name="Tile"
                         Focusable="False"
                         Command="{Binding DataContext.TileClickCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                         CommandParameter="{Binding}">
-                        <Button.Resources>
-                            <DataTemplate x:Key="Default">
-                                <Image Source="asdasdasdsade.png" Height="64" Width="64"/>
-                            </DataTemplate>
-                            <DataTemplate x:Key="Water">
-                                <Image Source="asdasdasdsade.png" Height="64" Width="64"/>
-                            </DataTemplate>
-                            <DataTemplate x:Key="Grass">
-                                <Image Source="asdasdasdsade.png" Height="64" Width="64"/>
-                            </DataTemplate>
-                        </Button.Resources>
-                        <Image x:Name="TileImage" Stretch="Fill" Source="3x.png"/> 
-                    </Button>
-                    <DataTemplate.Triggers>
-                        <DataTrigger Binding="{Binding Red}" Value="True">
-                            <Setter TargetName="TileImage" Property="Source" Value="pic.png"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Green}" Value="True">
-                            <Setter TargetName="TileImage" Property="Source" Value="C:\Users\mafl9\source\repos\TileMapEditor.App\TileMapEditor.App\pic2.png"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Blue}" Value="True">
-                            <Setter TargetName="Tile" Property="Background" Value="Blue"/>
-                        </DataTrigger>
-                    </DataTemplate.Triggers>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-    </ScrollViewer>
+                            <Image x:Name="TileImage" Stretch="Fill" Source="grass.png"/>
+                        </Button>
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding Red}" Value="True">
+                                <Setter TargetName="TileImage" Property="Source" Value="grass.png"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Green}" Value="True">
+                                <Setter TargetName="TileImage" Property="Source" Value="cobble.png"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Blue}" Value="True">
+                                <Setter TargetName="Tile" Property="Background" Value="Blue"/>
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        <Button Content="Export" HorizontalAlignment="Left" Margin="87,295,0,0" VerticalAlignment="Top" Width="78" Click="Button_Export"/>
+        <Button Content="Import" HorizontalAlignment="Left" Margin="87,346,0,0" VerticalAlignment="Top" Width="78" Click="Button_Import"/>
+    </Grid>
 </Window>

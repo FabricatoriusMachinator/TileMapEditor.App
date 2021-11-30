@@ -27,6 +27,7 @@ namespace TileMapEditor.App
 
 
         public Command<Tile> TileClickCommand { get; private set; }
+        public Command<TileMap> MapClickCommand { get; private set; }
 
         public TileMap()
         {
@@ -38,18 +39,9 @@ namespace TileMapEditor.App
             {
                 for (int c = 0; c < 8; c++)
                 {
-                    if (c % 3 == 0)
-                    {
-                        Tiles.Add(new Tile() { Row = r, Column = c, Green = true });
-                    }
-                    else if (c % 2 == 0)
-                    {
-                        Tiles.Add(new Tile() { Row = r, Column = c, Blue = true });
-                    }
-                    else
-                    {
+
                         Tiles.Add(new Tile() { Row = r, Column = c, Red = true });
-                    }
+
                 }
             }
 
@@ -59,13 +51,9 @@ namespace TileMapEditor.App
         private void OnTileClick(Tile tile)
         {
 
-            tile.Red = true;
+            tile.Red = false;
             tile.Blue = false;
-            tile.Green = false;
-            
-            
-
-
+            tile.Green = true;
         }
 
     }

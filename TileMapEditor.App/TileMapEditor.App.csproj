@@ -7,11 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="pic.png" />
+    <None Remove="cobble.png" />
+    <None Remove="grass.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="pic.png" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="cobble.png" />
+    <Resource Include="grass.png" />
   </ItemGroup>
 
 </Project>
