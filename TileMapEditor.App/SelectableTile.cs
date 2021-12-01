@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 
 namespace TileMapEditor.App
 {
-    class Tile : ObservableObject
+    class SelectableTile : ObservableObject
     {
-        public int Row { get; set; }
+        public enum Terrain {
+            Grass,
+            Dirt,
+            Cobble
+        }
 
-        public int Column { get; set; }
+        public Terrain terrain{get; set;}
 
         private bool blue;
         public bool Blue
@@ -19,7 +22,7 @@ namespace TileMapEditor.App
             get { return blue; }
             set
             {
-                if(blue != value)
+                if (blue != value)
                 {
                     blue = value;
                     OnPropertyChanged("Blue");

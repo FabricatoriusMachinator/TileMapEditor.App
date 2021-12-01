@@ -27,7 +27,6 @@ namespace TileMapEditor.App
     public partial class MainWindow : Window
     {
 
-        string json;
         public MainWindow()
         {
             InitializeComponent();

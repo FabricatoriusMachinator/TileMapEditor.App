@@ -15,23 +15,25 @@ namespace TileMapEditor.App
     {
 
         public List<Tile> Tiles { get; private set; }
+        public List<SelectableTile> TerrainType { get; private set; }
 
-        public enum Color
+        public enum Selection
         {
-            Red,
-            Green,
-            Blue
+            One,
+            Two,
+            Three
         }
 
-        public Color selectedEnum = Color.Red;
+        public Selection selectedEnum = Selection.One;
 
 
         public Command<Tile> TileClickCommand { get; private set; }
-        public Command<TileMap> MapClickCommand { get; private set; }
+        public Command<SelectableTile> TerrainClickCommand { get; private set; }
 
         public TileMap()
         {
             Tiles = new List<Tile>();
+            TerrainType = new List<SelectableTile>();
 
             
 
@@ -45,15 +47,62 @@ namespace TileMapEditor.App
                 }
             }
 
+            for (int r=0; r< 3; r++)
+            {
+                TerrainType.Add(new SelectableTile() { terrain = SelectableTile.Terrain.Grass, Red = true });
+                for (int c = 0; c < 2; c++)
+                {
+                    if (c % 2 == 0)
+                        TerrainType.Add(new SelectableTile() { terrain = SelectableTile.Terrain.Dirt, Blue = true});
+                    else 
+                        TerrainType.Add(new SelectableTile() { terrain = SelectableTile.Terrain.Cobble, Green = true});
+                    
+                        
+                }
+            }
+
             TileClickCommand = new Command<Tile>(OnTileClick);
+            TerrainClickCommand = new Command<SelectableTile>(OnTerrainClick);
+        }
+
+        private void OnTerrainClick(SelectableTile obj)
+        {
+            switch (obj.terrain)
+            {
+                case (SelectableTile.Terrain)0:
+                    selectedEnum = Selection.One;
+                    break;
+                case (SelectableTile.Terrain)1:
+                    selectedEnum = Selection.Two;
+                    break;
+                case (SelectableTile.Terrain)2:
+                    selectedEnum = Selection.Three;
+                    break;
+
+
+            } 
         }
 
         private void OnTileClick(Tile tile)
         {
+            if (selectedEnum == Selection.One) {
+                tile.Red = true;
+                tile.Blue = false;
+                tile.Green = false;
+            }
+            else if(selectedEnum == Selection.Two)
+            {
+                tile.Red = false;
+                tile.Blue = true;
+                tile.Green = false;
+            }
+            else if(selectedEnum == Selection.Three)
+            {
+                tile.Red = false;
+                tile.Blue = false;
+                tile.Green = true;
+            }
 
-            tile.Red = false;
-            tile.Blue = false;
-            tile.Green = true;
         }
 
     }

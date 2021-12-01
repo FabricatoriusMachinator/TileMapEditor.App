@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Remove="cobble.png" />
+    <None Remove="dirt.png" />
     <None Remove="grass.png" />
   </ItemGroup>
 
@@ -17,6 +18,7 @@
 
   <ItemGroup>
     <Resource Include="cobble.png" />
+    <Resource Include="dirt.png" />
     <Resource Include="grass.png" />
   </ItemGroup>
 

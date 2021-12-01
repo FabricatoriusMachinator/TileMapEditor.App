@@ -8,27 +8,37 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
 
-        <UniformGrid Rows="3" Columns="2" Height="128" Width="128" Margin="37,56,635,250">
-            <Button>
-                <Image Stretch="Fill" Source="grass.png"/>
-            </Button>
-            <Button>
-                <Image Stretch="Fill" Source="cobble.png"/>
-            </Button>
-            <Button>
-                <Image Stretch="Fill" Source="grass.png"/>
-            </Button>
-            <Button>
-                <Image Stretch="Fill" Source="grass.png"/>
-            </Button>
-            <Button>
-                <Image Stretch="Fill" Source="grass.png"/>
-            </Button>
-            <Button>
-                <Image Stretch="Fill" Source="grass.png"/>
-            </Button>
-
-        </UniformGrid>
+        <ScrollViewer Margin="0,0,512,167">
+        <ItemsControl ItemsSource="{Binding TerrainType}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="3" Columns="2" Height="192" Width="128" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        
+        <ItemsControl.ItemTemplate>
+            <DataTemplate>
+                <Button x:Name="Selectable"
+                        Focusable="False"
+                        Command="{Binding DataContext.TerrainClickCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                        CommandParameter="{Binding}">
+                    <Image x:Name="TerrainImage" Stretch="Fill" Source="grass.png"/>
+                </Button>
+                <DataTemplate.Triggers>
+                    <DataTrigger Binding="{Binding Red}" Value="True">
+                        <Setter TargetName="TerrainImage" Property="Source" Value="grass.png"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding Green}" Value="True">
+                        <Setter TargetName="TerrainImage" Property="Source" Value="cobble.png"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding Blue}" Value="True">
+                        <Setter TargetName="TerrainImage" Property="Source" Value="dirt.png"/>
+                    </DataTrigger>
+                </DataTemplate.Triggers>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        </ScrollViewer>
 
         <ScrollViewer Margin="317,56,0,0" HorizontalScrollBarVisibility="Auto" BorderBrush="Black" BorderThickness="10">
             <ItemsControl ItemsSource="{Binding Tiles}">
@@ -54,7 +64,7 @@
                                 <Setter TargetName="TileImage" Property="Source" Value="cobble.png"/>
                             </DataTrigger>
                             <DataTrigger Binding="{Binding Blue}" Value="True">
-                                <Setter TargetName="Tile" Property="Background" Value="Blue"/>
+                                <Setter TargetName="TileImage" Property="Source" Value="dirt.png"/>
                             </DataTrigger>
                         </DataTemplate.Triggers>
                     </DataTemplate>
